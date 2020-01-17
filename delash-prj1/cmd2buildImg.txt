@@ -1,0 +1,1 @@
+﻿docker build -t ashorg/delash:v1 -f ./delash-prj1/Dockerfile .
