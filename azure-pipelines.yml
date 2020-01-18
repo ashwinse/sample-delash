@@ -23,4 +23,5 @@ steps:
     containerRegistry: 'dockerhub-sc'
     repository: 'delash'
     command: 'buildAndPush'
-    Dockerfile: 'delash-prj1/Dockerfile'
+    Dockerfile: './delash-prj1/Dockerfile'
+    tags: 'v$(Build.BuildId)'
