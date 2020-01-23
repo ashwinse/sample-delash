@@ -25,7 +25,12 @@ steps:
 
 - task: HelmDeploy@0
   inputs:
-    connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceConnection: 'aks-cluster'
-    namespace: 'test'
-    command: 'ls'
+    command: 'package'
+    chartPath: 'charts/asp'
+    
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+
