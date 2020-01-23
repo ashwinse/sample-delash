@@ -19,18 +19,4 @@ steps:
     buildContext: '$(Build.Repository.LocalPath)'
     tags: 'v$(Build.BuildId)'
 
-- task: HelmInstaller@1
-  inputs:
-    helmVersionToInstall: '2.13.1'
-
-- task: HelmDeploy@0
-  inputs:
-    command: 'package'
-    chartPath: 'charts/asp'
-    
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
 
