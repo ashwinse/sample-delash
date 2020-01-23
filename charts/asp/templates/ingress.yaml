@@ -1,0 +1,24 @@
+{{- if .Values.microServices }}
+{{- range $key, $val := .Values.microServices}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ $key }}
+  annotations:
+    # nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "*"
+spec:
+  rules:  
+  - host: {{ $key }}.app.net
+    http:
+      paths:
+      - backend:
+          serviceName: {{ $key }}
+          servicePort: {{ $val.svcPort }}
+---
+{{- end }}
+{{- end }}
