@@ -7,10 +7,10 @@
 
 
 # Check if Software is installed already in registry.
-$CheckTeamsReg = Get-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | where {$_.DisplayName -like "Microsoft Teams*"}
+# $CheckTeamsReg = Get-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | where {$_.DisplayName -like "Microsoft Teams*"}
 
 # If Microsoft Teams is not installed continue with script. If it's istalled already script will exit.
-If ($CheckTeamsReg -eq $null) {
+# If ($CheckTeamsReg -eq $null) {
 
 $Installdir = "c:\Apps\install_Teams"    #path to download Microsoft Teams
 New-Item -Path $Installdir -ItemType directory
@@ -21,9 +21,9 @@ $destination = "$Installdir\Teams_windows_x64.exe"
 Invoke-WebRequest $source -OutFile $destination
 
 # Wait for the installation to finish. I've set it to 15 min. to take enough time until source of Microsoft Teams download from internet
-Start-Sleep -s 900
+Start-Sleep -s 3600
 
 # Start the installation of Microsoft Teams
 Start-Process -FilePath "$Installdir\Teams_windows_x64.exe"
 
-}
+# }
