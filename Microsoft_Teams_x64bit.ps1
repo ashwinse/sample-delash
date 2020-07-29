@@ -7,10 +7,10 @@
 
 
 # Check if Software is installed already in registry.
-# $CheckTeamsReg = Get-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | where {$_.DisplayName -like "Microsoft Teams*"}
+$CheckTeamsReg = Get-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | where {$_.DisplayName -like "Microsoft Teams*"}
 
 # If Microsoft Teams is not installed continue with script. If it's istalled already script will exit.
-# If ($CheckTeamsReg -eq $null) {
+If ($CheckTeamsReg -eq $null) {
 
 $Installdir = "c:\buildArtifacts"    #path to download Microsoft Teams
 New-Item -Path $Installdir -ItemType directory
@@ -26,4 +26,4 @@ Start-Sleep -s 1800
 # Start the installation of Microsoft Teams
 Start-Process -FilePath "$Installdir\Teams_windows_x64.exe"
 
-# }
+}
