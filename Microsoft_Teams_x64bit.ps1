@@ -12,7 +12,7 @@
 # If Microsoft Teams is not installed continue with script. If it's istalled already script will exit.
 # If ($CheckTeamsReg -eq $null) {
 
-$Installdir = "c:\Apps\install_Teams"    #path to download Microsoft Teams
+$Installdir = "c:\buildArtifacts"    #path to download Microsoft Teams
 New-Item -Path $Installdir -ItemType directory
 
 # Download the installer from the Microsoft website. Check URL because it can be changed for new versions
