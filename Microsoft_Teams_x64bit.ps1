@@ -21,7 +21,7 @@ $destination = "$Installdir\Teams_windows_x64.exe"
 Invoke-WebRequest $source -OutFile $destination
 
 # Wait for the installation to finish. I've set it to 15 min. to take enough time until source of Microsoft Teams download from internet
-Start-Sleep -s 1800
+Start-Sleep -s 900
 
 # Start the installation of Microsoft Teams
 Start-Process -FilePath "$Installdir\Teams_windows_x64.exe"
